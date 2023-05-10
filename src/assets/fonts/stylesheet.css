@@ -1,0 +1,39 @@
+@font-face {
+  font-display: swap;
+  font-family: "BentonSans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("BentonSans-Regular.woff2") format("woff2"), url("BentonSans-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "BentonSans Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("BentonSans-Bold.woff2") format("woff2"), url("BentonSans-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "BentonSans Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("BentonSans-Medium.woff2") format("woff2"), url("BentonSans-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "PP Editorial Old";
+  font-style: italic;
+  font-weight: normal;
+  src: url("PPEditorialOld-Italic.woff2") format("woff2"), url("PPEditorialOld-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: normal;
+  src: url("BebasNeue.woff2") format("woff2"), url("BebasNeue.woff") format("woff");
+}

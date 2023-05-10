@@ -1,0 +1,88 @@
+html,
+body {
+  accent-color: $color-primary;
+  color: $text-color-primary;
+  font-family: $font-main;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @media (max-width: 980px) {
+    font-size: 13px;
+  }
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  main {
+    flex: 1;
+  }
+}
+
+//Text
+
+p {
+  line-height: 1.5;
+}
+.font-bold {
+  font-family: $font-bold;
+}
+.font-medium {
+  font-family: $font-medium;
+}
+.font-italic {
+  font-family: $font-italic;
+}
+.font-extra {
+  font-family: $font-extra;
+}
+
+//Links
+a {
+  color: $text-color-primary;
+}
+.link-primary {
+  color: $color-primary;
+}
+.btn {
+  padding: 1rem 1.3rem;
+  &:hover {
+    color: white;
+    background-color: $color-primary;
+  }
+}
+.svg-hover {
+  svg {
+    fill: white;
+    &:hover {
+      fill: $color-primary;
+    }
+  }
+}
+.link-hover:hover {
+  color: $color-primary;
+}
+
+//Colors
+
+.text-primary {
+  color: $color-primary;
+}
+.text-secondary {
+  color: $color-secondary;
+}
+.bg-primary {
+  background-color: $color-primary;
+}
+.bg-primary-hover:hover {
+  background-color: $color-primary;
+  color: $text-color-primary;
+}
+.bg-white-hover:hover {
+  background-color: white;
+  color: $text-color-primary;
+}
+.bg-secondary {
+  background-color: $color-secondary;
+}
