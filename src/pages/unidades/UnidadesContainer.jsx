@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
+import ImageLoader from "../../components/ImageLoader";
 
 const UnidadesContainer = () => {
   useEffect(() => {
@@ -90,7 +91,7 @@ const UnidadesContainer = () => {
           </article>
           <article className="bg-secondary z-30">
             <div>
-              <img src="https://images.pexels.com/photos/1714430/pexels-photo-1714430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="aspect-square object-cover" />
+              <img src="https://images.pexels.com/photos/1714430/pexels-photo-1714430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="aspect-square" />
             </div>
             <div className="text-white p-8 text-sm">
               <h2 className="uppercase font-extra text-3xl pb-2 border-white border-b-2 mb-4">avalos 101</h2>
@@ -108,9 +109,7 @@ const UnidadesContainer = () => {
         </div>
       </section>
 
-      <section className="-mt-28">
-        <img src="https://images.pexels.com/photos/1500459/pexels-photo-1500459.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full" />
-      </section>
+      <ImageLoader src="https://images.pexels.com/photos/1500459/pexels-photo-1500459.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full aspect-video" />
     </Layout>
   );
 };

@@ -4,6 +4,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
+import ImageLoader from "../../components/ImageLoader";
 
 const UrquizaContainer = () => {
   useEffect(() => {
@@ -60,7 +61,7 @@ const UrquizaContainer = () => {
           <div className="text-center">
             <h1 className="text-6xl font-extra uppercase">El mix perfecto en</h1>
             <h1 className="text-white text-6xl font-extra mb-4 uppercase">el corazón porteño.</h1>
-            <Link to="/proyectos" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
+            <Link to="/proyecto" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
               VER MÁS
             </Link>
           </div>
@@ -105,16 +106,16 @@ const UrquizaContainer = () => {
         <div className="container mx-auto max-w-6xl px-10 py-24 relative">
           <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
             <div className="px-3">
-              <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
             <div className="px-3">
-              <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
             <div className="px-3">
-              <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
             <div className="px-3">
-              <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
           </Slide>
         </div>

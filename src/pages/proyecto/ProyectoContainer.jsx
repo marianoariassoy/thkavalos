@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
+import ImageLoader from "../../components/ImageLoader";
 
 const ProyectoContainer = () => {
   useEffect(() => {
@@ -72,14 +73,12 @@ const ProyectoContainer = () => {
             </p>
           </div>
           <div>
-            <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+            <ImageLoader src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full aspect-square" />
           </div>
         </div>
       </section>
 
-      <section>
-        <img src="https://images.pexels.com/photos/1907046/pexels-photo-1907046.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full" />
-      </section>
+      <ImageLoader src="https://images.pexels.com/photos/1907046/pexels-photo-1907046.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full aspect-video" />
     </Layout>
   );
 };

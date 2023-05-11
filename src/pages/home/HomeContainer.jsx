@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
+import ImageLoader from "../../components/ImageLoader";
 
 const HomeContainer = () => {
   useEffect(() => {
@@ -39,7 +40,7 @@ const HomeContainer = () => {
       <section>
         <div className="container mx-auto max-w-6xl grid px-10 py-28 gap-8 lg:grid-cols-2 lg:gap-20 ">
           <div>
-            <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
+            <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full aspect-square object-cover" />
           </div>
           <div>
             <h1 className="font-italic text-4xl mb-4">
