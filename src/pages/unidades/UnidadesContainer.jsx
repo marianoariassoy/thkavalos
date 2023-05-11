@@ -81,7 +81,7 @@ const UnidadesContainer = () => {
         </div>
       </section>
 
-      <section className="-mt-20">{loading ? <Loader /> : data.filter((item) => item.category == 5).map((item) => <ImageLoader key={item.id} src={item.image} alt="Imagen pie de página de Unidades" />)}</section>
+      <section className="-mt-20">{loading ? <Loader className="pt-20" /> : data.filter((item) => item.category == 5).map((item) => <ImageLoader key={item.id} src={item.image} alt="Imagen pie de página de Unidades" />)}</section>
     </Layout>
   );
 };
