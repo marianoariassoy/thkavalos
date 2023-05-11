@@ -1,29 +1,25 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import ReactPlayer from "react-player";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
 import ImageLoader from "../../components/ImageLoader";
+import useFetch from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
 
 const HomeContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const data = [
-    {
-      id: 1,
-      image: "https://images.pexels.com/photos/2001829/pexels-photo-2001829.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1",
-    },
-    {
-      id: 2,
-      image: "https://images.pexels.com/photos/956952/pexels-photo-956952.png?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1",
-    },
-    {
-      id: 3,
-      image: "https://images.pexels.com/photos/1907046/pexels-photo-1907046.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1",
-    },
-  ];
+  const { data, loading } = useFetch(`/imagenes`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
+  if (loadingArticles) return <Loader />;
+
+  const TextoHTML = ({ html }) => {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  };
 
   return (
     <Layout>
@@ -36,25 +32,24 @@ const HomeContainer = () => {
         <link rel="canonical" href="/" />
       </Helmet>
 
-      <Slider data={data} autoplay={true} indicators={true} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <section className="aspect-video object-cover">
+          <Slider data={data.filter((item) => item.category == 1)} autoplay={true} indicators={true} />
+        </section>
+      )}
+
       <section>
         <div className="container mx-auto max-w-6xl grid px-10 py-28 gap-8 lg:grid-cols-2 lg:gap-20 ">
           <div>
-            <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full aspect-square object-cover" />
+            <ImageLoader src={dataArticles[0].image} alt={dataArticles[0].title} className="w-full aspect-square object-cover" />
           </div>
           <div>
-            <h1 className="font-italic text-4xl mb-4">
-              Diseño de Vanguardia
-              <br /> en el corazón de Villa Urquiza
-            </h1>
+            <h1 className="font-italic text-4xl mb-4">{dataArticles[0].title}</h1>
             <p className="mb-8 text-justify">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-              ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-              praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-              ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-              nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet
+              <TextoHTML html={dataArticles[0].text} />
             </p>
-
             <Link to="/unidades" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-primary-hover hover:shadow-lg">
               VER MÁS
             </Link>
@@ -62,16 +57,7 @@ const HomeContainer = () => {
         </div>
       </section>
 
-      <section>
-        <iframe
-          width="100%"
-          height="600"
-          src="https://www.youtube.com/embed/2ecqslqwXLQ?controls=0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </section>
+      {loading ? <Loader /> : data.filter((item) => item.category == 7).map((item) => <ReactPlayer key={item.id} url={item.video} width="100%" className="video-player" autoplay muted />)}
     </Layout>
   );
 };

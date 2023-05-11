@@ -34,3 +34,9 @@
     opacity: 1;
   }
 }
+.video-player {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  width: 100%;
+  height: 56vw !important;
+}

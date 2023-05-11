@@ -3,13 +3,25 @@ import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
+import ReactPlayer from "react-player";
 import Layout from "../../components/Layout";
 import ImageLoader from "../../components/ImageLoader";
+import useFetch from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
 
 const UrquizaContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { data, loading } = useFetch(`/imagenes`);
+  const { data: dataGaleria, loading: loadingGaleria } = useFetch(`/galeria`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
+  if (loadingArticles) return <Loader />;
+
+  const TextoHTML = ({ html }) => {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  };
 
   const properties = {
     arrows: true,
@@ -40,36 +52,28 @@ const UrquizaContainer = () => {
 
       <section className="h-screen">
         <div className="hero bg-secondary px-12 py-8 absolute bottom-20 right-10 z-20 w-3/4 max-w-md">
-          <h1 className="font-italic text-4xl mb-4 text-primary">Villa Urquiza</h1>
+          <h1 className="font-italic text-4xl mb-4 text-primary">{dataArticles[7].title}</h1>
           <p className="text-white">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+            <TextoHTML html={dataArticles[7].text} />
           </p>
         </div>
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/2ecqslqwXLQ?controls=0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+
+        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} height="100%" width="100%" autoplay muted />)}
       </section>
 
       <section className="bg-primary">
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-16 px-10 py-16">
           <div className="text-center">
-            <h1 className="text-6xl font-extra uppercase">El mix perfecto en</h1>
-            <h1 className="text-white text-6xl font-extra mb-4 uppercase">el corazón porteño.</h1>
+            <h1 className="text-6xl font-extra uppercase">{dataArticles[8].title2}</h1>
+            <h1 className="text-white text-6xl font-extra mb-4 uppercase">{dataArticles[8].title3}</h1>
             <Link to="/proyecto" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
               VER MÁS
             </Link>
           </div>
           <div className="text-center border-neutral-950 lg:text-left lg:border-l-4 lg:pl-12 ">
-            <h1 className="font-italic text-4xl mb-4">Una fusión ideal.</h1>
+            <h1 className="font-italic text-4xl mb-4">{dataArticles[8].title}</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-              ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+              <TextoHTML html={dataArticles[8].text} />
             </p>
           </div>
         </div>
@@ -79,15 +83,13 @@ const UrquizaContainer = () => {
         <div className="absolute left-0 w-full z-20 ">
           <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 px-10 pt-28">
             <div className="bg-white p-8">
-              <h1 className="text-6xl font-extra uppercase mb-4">LOCACIÓN.</h1>
+              <h1 className="text-6xl font-extra uppercase mb-4">{dataArticles[9].title}</h1>
               <p className="mb-8">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                <TextoHTML html={dataArticles[9].text} />
               </p>
-              <h1 className="text-6xl font-extra uppercase mb-4">CONECTIVIDAD.</h1>
+              <h1 className="text-6xl font-extra uppercase mb-4">{dataArticles[10].title}</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                <TextoHTML html={dataArticles[10].text} />
               </p>
             </div>
             <div></div>
@@ -104,20 +106,17 @@ const UrquizaContainer = () => {
 
       <section>
         <div className="container mx-auto max-w-6xl px-10 py-24 relative">
-          <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
-            <div className="px-3">
-              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
-            </div>
-            <div className="px-3">
-              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
-            </div>
-            <div className="px-3">
-              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
-            </div>
-            <div className="px-3">
-              <ImageLoader src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
-            </div>
-          </Slide>
+          {loadingGaleria ? (
+            <Loader />
+          ) : (
+            <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
+              {dataGaleria.map((item) => (
+                <div className="px-3" key={item.id}>
+                  <ImageLoader src={item.image} alt="" className="w-full" />
+                </div>
+              ))}
+            </Slide>
+          )}
         </div>
       </section>
     </Layout>

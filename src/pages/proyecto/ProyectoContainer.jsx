@@ -4,18 +4,22 @@ import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
 import ImageLoader from "../../components/ImageLoader";
+import useFetch from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
 
 const ProyectoContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const data = [
-    {
-      id: 2,
-      image: "https://images.pexels.com/photos/956952/pexels-photo-956952.png?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1",
-    },
-  ];
+  const { data, loading } = useFetch(`/imagenes`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
+  if (loadingArticles) return <Loader />;
+
+  const TextoHTML = ({ html }) => {
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -29,29 +33,27 @@ const ProyectoContainer = () => {
 
       <section className="h-screen">
         <div className="hero bg-secondary px-12 py-8 absolute bottom-20 left-10 z-20 w-3/4 max-w-md">
-          <h1 className="font-italic text-4xl mb-4 text-primary">El Proyecto</h1>
+          <h1 className="font-italic text-4xl mb-4 text-primary">{dataArticles[1].title}</h1>
           <p className="text-white">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+            <TextoHTML html={dataArticles[1].text} />
           </p>
         </div>
-        <Slider data={data} autoplay={false} indicators={false} />
+        {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 2)} autoplay={false} indicators={false} />}
       </section>
 
       <section className="bg-primary">
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-16 px-10 py-16">
           <div className="text-center">
-            <h1 className="text-6xl font-extra">EXCLUSIVAS UNIDADES</h1>
-            <h1 className="text-white text-6xl font-extra mb-4">DESDE 30M2 A 190M2</h1>
+            <h1 className="text-6xl font-extra">{dataArticles[2].title2}</h1>
+            <h1 className="text-white text-6xl font-extra mb-4">{dataArticles[2].title3}</h1>
             <Link to="/" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
               VER MÁS
             </Link>
           </div>
           <div className="text-center border-neutral-950 lg:text-left lg:border-l-4 lg:pl-12 ">
-            <h1 className="font-italic text-4xl mb-4">Tu casa, tu lugar en el mundo.</h1>
+            <h1 className="font-italic text-4xl mb-4">{dataArticles[2].title}</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-              ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+              <TextoHTML html={dataArticles[2].text} />
             </p>
           </div>
         </div>
@@ -60,25 +62,22 @@ const ProyectoContainer = () => {
       <section>
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 lg:gap-20 px-10 py-28">
           <div>
-            <h1 className="font-italic text-4xl mb-4">Espacios pensados para disfrutar todos los días.</h1>
+            <h1 className="font-italic text-4xl mb-4">{dataArticles[3].title}</h1>
             <p className="mb-12 text-justify">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-              ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
-              praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+              <TextoHTML html={dataArticles[3].text} />
             </p>
-            <h1 className="font-italic text-4xl mb-4">Tu casa, tu lugar en el mundo.</h1>
+            <h1 className="font-italic text-4xl mb-4">{dataArticles[4].title}</h1>
             <p className="mb-12 text-justify">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-              ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit
+              <TextoHTML html={dataArticles[4].text} />
             </p>
           </div>
           <div>
-            <ImageLoader src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full aspect-square" />
+            <ImageLoader src={dataArticles[3].image} alt={dataArticles[3].title} className="w-full aspect-square" />
           </div>
         </div>
       </section>
 
-      <ImageLoader src="https://images.pexels.com/photos/1907046/pexels-photo-1907046.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full aspect-video" />
+      {loading ? <Loader /> : data.filter((item) => item.category == 3).map((item) => <ImageLoader key={item.id} src={item.image} alt="Imagen pie de página de Proyectos" />)}
     </Layout>
   );
 };

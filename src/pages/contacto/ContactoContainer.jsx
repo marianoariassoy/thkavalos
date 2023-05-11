@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
 import logoFooter from "../../assets/images/logo-footer.svg";
+import useFetch from "../../hooks/useFetch";
+import Loader from "../../components/Loader";
 
 const ContactoContainer = () => {
   useEffect(() => {
@@ -11,6 +13,7 @@ const ContactoContainer = () => {
   }, []);
 
   const [sended, setSended] = useState(false);
+  const { data, loading } = useFetch(`/imagenes`);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -33,13 +36,6 @@ const ContactoContainer = () => {
         setSended(false);
       });
   };
-
-  const data = [
-    {
-      id: 2,
-      image: "https://images.pexels.com/photos/956952/pexels-photo-956952.png?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1",
-    },
-  ];
 
   return (
     <Layout>
@@ -97,7 +93,7 @@ const ContactoContainer = () => {
             </div>
           )}
         </div>
-        <Slider data={data} autoplay={false} indicators={false} />
+        {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 6)} autoplay={false} indicators={false} />}
       </section>
 
       <section className="bg-secondary text-white">
