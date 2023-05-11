@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Loader from "./Loader";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import Loader from "./Loader";
 
 const SliderItem = ({ src, alt }) => {
   const [isLoading, setIsLoading] = useState(true);

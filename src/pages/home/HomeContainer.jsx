@@ -1,9 +1,14 @@
-import Layout from "../../components/Layout";
-import Slider from "../../components/Slider";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Layout from "../../components/Layout";
+import Slider from "../../components/Slider";
 
 const HomeContainer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const data = [
     {
       id: 1,
@@ -49,7 +54,7 @@ const HomeContainer = () => {
               nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet
             </p>
 
-            <Link to="/" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-primary-hover hover:shadow-lg">
+            <Link to="/unidades" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-primary-hover hover:shadow-lg">
               VER MÁS
             </Link>
           </div>

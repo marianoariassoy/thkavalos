@@ -1,9 +1,14 @@
-import Layout from "../../components/Layout";
-import Slider from "../../components/Slider";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Layout from "../../components/Layout";
+import Slider from "../../components/Slider";
 
 const ProyectoContainer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const data = [
     {
       id: 2,

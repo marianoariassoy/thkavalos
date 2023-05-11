@@ -1,10 +1,15 @@
-import Layout from "../../components/Layout";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
+import Layout from "../../components/Layout";
 
 const UrquizaContainer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const properties = {
     arrows: true,
     transitionDuration: 500,
@@ -12,7 +17,6 @@ const UrquizaContainer = () => {
     autoplay: true,
     indicators: false,
   };
-
   const responsiveSettings = [
     {
       breakpoint: 800,
@@ -22,7 +26,6 @@ const UrquizaContainer = () => {
       },
     },
   ];
-
   return (
     <Layout>
       <Helmet>
@@ -57,7 +60,7 @@ const UrquizaContainer = () => {
           <div className="text-center">
             <h1 className="text-6xl font-extra uppercase">El mix perfecto en</h1>
             <h1 className="text-white text-6xl font-extra mb-4 uppercase">el corazón porteño.</h1>
-            <Link to="/" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
+            <Link to="/proyectos" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
               VER MÁS
             </Link>
           </div>
@@ -90,7 +93,7 @@ const UrquizaContainer = () => {
           </div>
         </div>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.45340236713!2d-58.515698734704685!3d-34.615654770005854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses!2sar!4v1683748945845!5m2!1ses!2sar"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.1052556914838!2d-58.48705808883593!3d-34.576203172851365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb667ea1a392d%3A0xa7a38afdc3a0c2b4!2s%C3%81valos%202183%2C%20C1431DPO%20CABA%2C%20Argentina!5e0!3m2!1ses!2sit!4v1681379277884!5m2!1ses!2sit"
           width="100%"
           height="100%"
           loading="lazy"
@@ -101,16 +104,16 @@ const UrquizaContainer = () => {
       <section>
         <div className="container mx-auto max-w-6xl px-10 py-24 relative">
           <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
-            <div className="pr-4">
+            <div className="px-3">
               <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
-            <div className="pl-4">
+            <div className="px-3">
               <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
-            <div className="pr-4">
+            <div className="px-3">
               <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
-            <div className="pl-4">
+            <div className="px-3">
               <img src="https://images.pexels.com/photos/1274850/pexels-photo-1274850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-full" />
             </div>
           </Slide>

@@ -1,9 +1,14 @@
-import Layout from "../../components/Layout";
-import Slider from "../../components/Slider";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Layout from "../../components/Layout";
+import Slider from "../../components/Slider";
 
 const UnidadesContainer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const data = [
     {
       id: 2,
@@ -103,7 +108,7 @@ const UnidadesContainer = () => {
         </div>
       </section>
 
-      <section className="-mt-36">
+      <section className="-mt-28">
         <img src="https://images.pexels.com/photos/1500459/pexels-photo-1500459.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&dpr=1" alt="" className="w-full" />
       </section>
     </Layout>
