@@ -96,29 +96,6 @@ a {
   background-color: #1d1d1b;
 }
 
-.svg-hover {
-  fill: #fff;
-  transition: fill 0.3s ease;
-}
-.svg-hover:hover {
-  fill: #ffcd02;
-}
-
-.nav-primary:hover {
-  color: #ffcd02;
-}
-
-.active {
-  color: #ffcd02;
-}
-
-@media (max-width: 980px) {
-  .logo {
-    width: 33vw;
-    max-width: 150px;
-  }
-}
-
 @media (max-width: 980px) {
   nav {
     display: none;
@@ -139,6 +116,42 @@ a {
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
     width: 100vw;
+  }
+}
+
+.svg-hover {
+  fill: #fff;
+  transition: fill 0.3s ease;
+}
+.svg-hover:hover {
+  fill: #ffcd02;
+}
+
+.lan-hover {
+  color: white;
+}
+.lan-hover svg {
+  fill: white;
+}
+.lan-hover:hover {
+  color: #ffcd02;
+}
+.lan-hover:hover svg {
+  fill: #ffcd02;
+}
+
+.nav-primary:hover {
+  color: #ffcd02;
+}
+
+.active {
+  color: #ffcd02;
+}
+
+@media (max-width: 980px) {
+  .logo {
+    width: 33vw;
+    max-width: 150px;
   }
 }
 

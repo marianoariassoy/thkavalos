@@ -6,15 +6,17 @@ import Slider from "../../components/Slider";
 import ImageLoader from "../../components/ImageLoader";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
+import { useDataContext } from "../../context/lanContext";
 
 const UnidadesContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const { lan } = useDataContext();
   const { data, loading } = useFetch(`/imagenes`);
   const { data: dataUnidades, loading: loadingUnidades } = useFetch(`/unidades`);
-  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones/${lan}`);
   if (loadingArticles) return <Loader />;
 
   const TextoHTML = ({ html }) => {
@@ -39,7 +41,6 @@ const UnidadesContainer = () => {
             <TextoHTML html={dataArticles[5].text} />
           </p>
         </div>
-
         {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 4)} autoplay={false} indicators={false} />}
       </section>
 
@@ -72,7 +73,7 @@ const UnidadesContainer = () => {
                     <TextoHTML html={item.text} />
                   </p>
                   <a href={item.file} target="_blank" rel="noreferrer" className="text-black bg-primary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
-                    VER MÁS
+                    {lan === "es" ? "VER MÁS" : "MORE INFO"}
                   </a>
                 </div>
               </article>

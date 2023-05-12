@@ -8,15 +8,17 @@ import Layout from "../../components/Layout";
 import ImageLoader from "../../components/ImageLoader";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
+import { useDataContext } from "../../context/lanContext";
 
 const UrquizaContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const { lan } = useDataContext();
   const { data, loading } = useFetch(`/imagenes`);
   const { data: dataGaleria, loading: loadingGaleria } = useFetch(`/galeria`);
-  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones/${lan}`);
   if (loadingArticles) return <Loader />;
 
   const TextoHTML = ({ html }) => {
@@ -57,7 +59,6 @@ const UrquizaContainer = () => {
             <TextoHTML html={dataArticles[7].text} />
           </p>
         </div>
-
         {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} height="100%" width="100%" autoplay muted />)}
       </section>
 
@@ -67,7 +68,7 @@ const UrquizaContainer = () => {
             <h1 className="text-6xl font-extra uppercase">{dataArticles[8].title2}</h1>
             <h1 className="text-white text-6xl font-extra mb-4 uppercase">{dataArticles[8].title3}</h1>
             <Link to="/proyecto" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
-              VER MÁS
+              {lan === "es" ? "VER MÁS" : "SEE MORE"}
             </Link>
           </div>
           <div className="text-center border-neutral-950 lg:text-left lg:border-l-4 lg:pl-12 ">

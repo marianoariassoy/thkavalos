@@ -7,19 +7,21 @@ import Slider from "../../components/Slider";
 import ImageLoader from "../../components/ImageLoader";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
+import { useDataContext } from "../../context/lanContext";
 
 const HomeContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { data, loading } = useFetch(`/imagenes`);
-  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones`);
-  if (loadingArticles) return <Loader />;
-
   const TextoHTML = ({ html }) => {
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   };
+
+  const { lan } = useDataContext();
+  const { data, loading } = useFetch(`/imagenes`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones/${lan}`);
+  if (loadingArticles) return <Loader />;
 
   return (
     <Layout>
@@ -51,7 +53,7 @@ const HomeContainer = () => {
               <TextoHTML html={dataArticles[0].text} />
             </p>
             <Link to="/unidades" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-primary-hover hover:shadow-lg">
-              VER MÁS
+              {lan === "es" ? "VER MÁS" : "SEE MORE"}
             </Link>
           </div>
         </div>
