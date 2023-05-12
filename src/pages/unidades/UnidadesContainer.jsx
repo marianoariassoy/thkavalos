@@ -70,7 +70,7 @@ const UnidadesContainer = () => {
                 <div className="text-white p-8 text-sm">
                   <h2 className="uppercase font-extra text-3xl pb-2 border-white border-b-2 mb-4">{item.title}</h2>
                   <p className="mb-8">
-                    <TextoHTML html={item.text} />
+                    <TextoHTML html={lan === "es" ? item.text : item.text_eng} />
                   </p>
                   <a href={item.file} target="_blank" rel="noreferrer" className="text-black bg-primary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
                     {lan === "es" ? "VER MÁS" : "MORE INFO"}
