@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
-import ImageLoader from "../../components/ImageLoader";
+import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
@@ -64,8 +63,8 @@ const UnidadesContainer = () => {
           ) : (
             dataUnidades.map((item) => (
               <article className="bg-secondary z-30" key={item.id}>
-                <div>
-                  <img src={item.image} alt={item.title} className="aspect-square object-cover" />
+                <div className="aspect-video object-cover w-full overflow-hidden">
+                  <ImageComponent src={item.image} alt={item.title} />
                 </div>
                 <div className="text-white p-8 text-sm">
                   <h2 className="uppercase font-extra text-3xl pb-2 border-white border-b-2 mb-4">{item.title}</h2>
@@ -82,7 +81,19 @@ const UnidadesContainer = () => {
         </div>
       </section>
 
-      <section className="-mt-20">{loading ? <Loader className="pt-20" /> : data.filter((item) => item.category == 5).map((item) => <ImageLoader key={item.id} src={item.image} alt="Imagen pie de página de Unidades" />)}</section>
+      <section className="-mt-20">
+        {loading ? (
+          <Loader />
+        ) : (
+          data
+            .filter((item) => item.category == 5)
+            .map((item) => (
+              <div className="w-full aspect-video block" key={item.id}>
+                <ImageComponent src={item.image} alt="Imagen pie de página de Unidades" />
+              </div>
+            ))
+        )}
+      </section>
     </Layout>
   );
 };

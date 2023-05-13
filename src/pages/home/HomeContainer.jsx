@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
-import ImageLoader from "../../components/ImageLoader";
+import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
@@ -45,7 +45,7 @@ const HomeContainer = () => {
       <section>
         <div className="container mx-auto max-w-6xl grid px-10 py-28 gap-8 lg:grid-cols-2 lg:gap-20 ">
           <div>
-            <ImageLoader src={dataArticles[0].image} alt={dataArticles[0].title} className="w-full aspect-square object-cover" />
+            <ImageComponent src={dataArticles[0].image} alt={dataArticles[0].title} />
           </div>
           <div>
             <h1 className="font-italic text-4xl mb-4">{dataArticles[0].title}</h1>

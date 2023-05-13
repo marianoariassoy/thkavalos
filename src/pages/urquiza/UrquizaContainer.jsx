@@ -5,7 +5,7 @@ import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player";
 import Layout from "../../components/Layout";
-import ImageLoader from "../../components/ImageLoader";
+import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
@@ -112,8 +112,8 @@ const UrquizaContainer = () => {
           ) : (
             <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
               {dataGaleria.map((item) => (
-                <div className="px-3" key={item.id}>
-                  <ImageLoader src={item.image} alt="" className="w-full" />
+                <div className="px-3 w-full aspect-square object-contain overflow-hidden" key={item.id}>
+                  <ImageComponent src={item.image} alt="" />
                 </div>
               ))}
             </Slide>

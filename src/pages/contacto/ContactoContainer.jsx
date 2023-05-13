@@ -27,7 +27,7 @@ const ContactoContainer = () => {
         <link rel="canonical" href="/contacto" />
       </Helmet>
 
-      <section className="h-screen">
+      <section className="h-screen bg-gray-200">
         <div className="absolute bottom-20 right-10 z-20 w-3/4 max-w-md text-white">
           <h1 className="font-italic text-4xl mb-8">Contacto.</h1>
           <Form />

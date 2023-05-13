@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
-import ImageLoader from "../../components/ImageLoader";
+import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
@@ -74,12 +74,12 @@ const ProyectoContainer = () => {
             </p>
           </div>
           <div>
-            <ImageLoader src={dataArticles[3].image} alt={dataArticles[3].title} className="w-full aspect-square" />
+            <ImageComponent src={dataArticles[3].image} alt={dataArticles[3].title} className="w-full aspect-square" />
           </div>
         </div>
       </section>
 
-      {loading ? <Loader /> : data.filter((item) => item.category == 3).map((item) => <ImageLoader key={item.id} src={item.image} alt="Imagen pie de página de Proyectos" />)}
+      {loading ? <Loader /> : data.filter((item) => item.category == 3).map((item) => <ImageComponent key={item.id} src={item.image} alt="Imagen pie de página de Proyectos" />)}
     </Layout>
   );
 };
