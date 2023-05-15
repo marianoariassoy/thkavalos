@@ -38,6 +38,7 @@ p {
 
 .font-italic {
   font-family: "PP Editorial Old";
+  font-style: italic;
 }
 
 .font-extra {
