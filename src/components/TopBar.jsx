@@ -16,7 +16,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="bg-secondary py-2 flex justify-end items-center text-white px-8 text-sm">
+    <div className="bg-secondary py-2 flex justify-end items-center text-white px-8 top-bar">
       <div className="flex items-center gap-3">
         <div>
           <a href="https://www.instagram.com/thk.avalos/" target="_blank" rel="noopener noreferrer" className="svg-hover">

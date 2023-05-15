@@ -55,3 +55,10 @@ nav {
     max-width: 150px;
   }
 }
+.bg-white {
+  background-color: white;
+  transition: all 0.3s ease;
+  .logo {
+    width: 80px;
+  }
+}

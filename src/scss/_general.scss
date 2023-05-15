@@ -5,6 +5,7 @@ body {
   font-family: $font-main;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
   @media (max-width: 980px) {
     font-size: 13px;
   }

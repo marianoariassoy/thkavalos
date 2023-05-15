@@ -34,7 +34,7 @@ const ProyectoContainer = () => {
       </Helmet>
 
       <section className="h-screen">
-        <div className="hero bg-secondary px-12 py-8 absolute bottom-20 left-10 z-20 w-3/4 max-w-md">
+        <div className="hero bg-secondary px-12 py-8 absolute bottom-20 right-10 z-20 w-3/4 max-w-md">
           <h1 className="font-italic text-4xl mb-4 text-primary">{dataArticles[1].title}</h1>
           <p className="text-white">
             <TextoHTML html={dataArticles[1].text} />
@@ -65,11 +65,11 @@ const ProyectoContainer = () => {
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 lg:gap-20 px-10 py-28">
           <div>
             <h1 className="font-italic text-4xl mb-4">{dataArticles[3].title}</h1>
-            <p className="mb-12 text-justify">
+            <p className="mb-12">
               <TextoHTML html={dataArticles[3].text} />
             </p>
             <h1 className="font-italic text-4xl mb-4">{dataArticles[4].title}</h1>
-            <p className="mb-12 text-justify">
+            <p className="mb-12">
               <TextoHTML html={dataArticles[4].text} />
             </p>
           </div>

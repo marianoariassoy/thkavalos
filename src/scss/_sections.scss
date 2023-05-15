@@ -40,3 +40,12 @@
   width: 100%;
   height: 56vw !important;
 }
+.top-bar {
+  font-size: 0.8rem;
+}
+.indicators,
+.default-nav {
+  @media (max-width: 980px) {
+    display: none !important;
+  }
+}

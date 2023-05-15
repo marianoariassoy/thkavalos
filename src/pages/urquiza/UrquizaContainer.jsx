@@ -30,7 +30,7 @@ const UrquizaContainer = () => {
     transitionDuration: 500,
     pauseOnHover: false,
     autoplay: true,
-    indicators: false,
+    indicators: true,
   };
   const responsiveSettings = [
     {
@@ -41,6 +41,7 @@ const UrquizaContainer = () => {
       },
     },
   ];
+
   return (
     <Layout>
       <Helmet>
@@ -112,8 +113,8 @@ const UrquizaContainer = () => {
           ) : (
             <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
               {dataGaleria.map((item) => (
-                <div className="px-3 w-full aspect-square object-contain overflow-hidden" key={item.id}>
-                  <ImageComponent src={item.image} alt="" />
+                <div className="px-3 w-full " key={item.id}>
+                  <ImageComponent src={item.image} alt="Foto de Villa Urquiza" />
                 </div>
               ))}
             </Slide>

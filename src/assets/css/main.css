@@ -5,6 +5,7 @@ body {
   font-family: "BentonSans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 15px;
 }
 @media (max-width: 980px) {
   html,
@@ -155,6 +156,14 @@ a {
   }
 }
 
+.bg-white {
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.bg-white .logo {
+  width: 80px;
+}
+
 #nav-menu {
   cursor: pointer;
   display: none;
@@ -254,4 +263,15 @@ a {
      object-fit: cover;
   width: 100%;
   height: 56vw !important;
+}
+
+.top-bar {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 980px) {
+  .indicators,
+  .default-nav {
+    display: none !important;
+  }
 }/*# sourceMappingURL=main.css.map */

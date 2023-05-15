@@ -11,6 +11,10 @@ import { useDataContext } from "../../context/lanContext";
 const ContactoContainer = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    const miDiv = document.querySelector("header");
+    const miLogo = document.querySelector(".logo");
+    miDiv.style.backgroundColor = "white";
+    miLogo.style.width = "80px";
   }, []);
 
   const { lan } = useDataContext();
