@@ -3,7 +3,7 @@
   font-family: "BentonSans";
   font-style: normal;
   font-weight: normal;
-  src: url("BentonSans-Regular.woff2") format("woff2"), url("BentonSans-Regular.woff") format("woff");
+  src: url("BentonSans-Regular.woff2") format("woff2"), url("BentonSans-Regular.woff") format("woff"), url("BentonSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-family: "BentonSans Bold";
   font-style: normal;
   font-weight: bold;
-  src: url("BentonSans-Bold.woff2") format("woff2"), url("BentonSans-Bold.woff") format("woff");
+  src: url("BentonSans-Bold.woff2") format("woff2"), url("BentonSans-Bold.woff") format("woff"), url("BentonSans-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-family: "BentonSans Medium";
   font-style: normal;
   font-weight: 500;
-  src: url("BentonSans-Medium.woff2") format("woff2"), url("BentonSans-Medium.woff") format("woff");
+  src: url("BentonSans-Medium.woff2") format("woff2"), url("BentonSans-Medium.woff") format("woff"), url("BentonSans-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   font-family: "PP Editorial Old";
   font-style: italic;
   font-weight: normal;
-  src: url("PPEditorialOld-Italic.woff2") format("woff2"), url("PPEditorialOld-Italic.woff") format("woff");
+  src: url("PPEditorialOld-Italic.woff2") format("woff2"), url("PPEditorialOld-Italic.woff") format("woff"), url("PPEditorialOld-Italic.ttf") format("truetype");
 }
 
 @font-face {
@@ -35,5 +35,5 @@
   font-family: "Bebas Neue";
   font-style: normal;
   font-weight: normal;
-  src: url("BebasNeue.woff2") format("woff2"), url("BebasNeue.woff") format("woff");
+  src: url("BebasNeue.woff2") format("woff2"), url("BebasNeue.woff") format("woff"), url("BebasNeue.ttf") format("truetype");
 }
