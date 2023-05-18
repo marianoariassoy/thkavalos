@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
-import ReactPlayer from "react-player";
+
 import Layout from "../../components/Layout";
 import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
+import ReactPlayer from "react-player";
 
 const UrquizaContainer = () => {
   useEffect(() => {
@@ -53,14 +54,14 @@ const UrquizaContainer = () => {
         <link rel="canonical" href="/villa-urquiza" />
       </Helmet>
 
-      <section className="h-screen">
+      <section className="">
         <div className="hero bg-secondary px-12 py-8 absolute bottom-20 right-10 z-20 w-3/4 max-w-md">
           <h1 className="font-italic text-4xl mb-4 text-primary">{dataArticles[7].title}</h1>
           <p className="text-white">
             <TextoHTML html={dataArticles[7].text} />
           </p>
         </div>
-        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} controls loop autoplay height="100%" width="100%" />)}
+        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} playing={true} controls={true} muted={true} loop width="100%" height="auto" className="w-screen aspect-video" />)}
       </section>
 
       <section className="bg-primary">

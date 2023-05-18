@@ -59,7 +59,7 @@ const HomeContainer = () => {
         </div>
       </section>
 
-      {loading ? <Loader /> : data.filter((item) => item.category == 7).map((item) => <ReactPlayer key={item.id} url={item.video} width="100%" className="video-player" autoplay muted />)}
+      {loading ? <Loader /> : data.filter((item) => item.category == 7).map((item) => <ReactPlayer key={item.id} url={item.video} playing={true} controls={true} muted={true} loop width="100%" height="auto" className="w-screen aspect-video" />)}
     </Layout>
   );
 };
