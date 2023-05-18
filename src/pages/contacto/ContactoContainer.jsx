@@ -33,7 +33,7 @@ const ContactoContainer = () => {
 
       <section className="h-screen bg-gray-200">
         <div className="absolute bottom-20 right-10 z-20 w-3/4 max-w-md text-white">
-          <h1 className="font-italic text-4xl mb-8">Contacto.</h1>
+          <h1 className="font-italic text-4xl mb-8">{lan === "es" ? "Contacto." : "Contact."}</h1>
           <Form />
         </div>
         {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 6)} autoplay={false} indicators={false} />}

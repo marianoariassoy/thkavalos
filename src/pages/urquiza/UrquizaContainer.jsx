@@ -60,7 +60,7 @@ const UrquizaContainer = () => {
             <TextoHTML html={dataArticles[7].text} />
           </p>
         </div>
-        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} height="100%" width="100%" autoplay muted />)}
+        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} controls loop autoplay height="100%" width="100%" />)}
       </section>
 
       <section className="bg-primary">

@@ -49,9 +49,9 @@ const HomeContainer = () => {
           </div>
           <div>
             <h1 className="font-italic text-4xl mb-4">{dataArticles[0].title}</h1>
-            <p className="mb-8">
+            <div className="mb-8">
               <TextoHTML html={dataArticles[0].text} />
-            </p>
+            </div>
             <Link to="/unidades" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-primary-hover hover:shadow-lg">
               {lan === "es" ? "VER MÁS" : "SEE MORE"}
             </Link>
