@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import Layout from "../../components/Layout";
+import { useDataContext } from "../../context/lanContext";
 import Slider from "../../components/Slider";
 import logoFooter from "../../assets/images/logo-footer.svg";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import Form from "./Form";
-import { useDataContext } from "../../context/lanContext";
+import TopBar from "../../components/TopBar";
+import NavBar from "../../components/NavBar";
 
 const ContactoContainer = () => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const ContactoContainer = () => {
   const { data, loading } = useFetch(`/imagenes`);
 
   return (
-    <Layout>
+    <>
       <Helmet>
         <title>THK Avalos &bull; Contacto</title>
         <meta name="description" content="" />
@@ -31,30 +32,37 @@ const ContactoContainer = () => {
         <link rel="canonical" href="/contacto" />
       </Helmet>
 
-      <section className="h-screen bg-gray-200">
-        <div className="absolute bottom-20 right-10 z-20 w-3/4 max-w-md text-white">
-          <h1 className="font-italic text-4xl mb-8">{lan === "es" ? "Contacto." : "Contact."}</h1>
-          <Form />
-        </div>
-        {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 6)} autoplay={false} indicators={false} />}
-      </section>
+      <header className="absolute z-40 w-full">
+        <TopBar />
+        <NavBar />
+      </header>
 
-      <section className="bg-secondary text-white">
-        <div className="container mx-auto max-w-6xl lg:flex justify-between items-center gap-4 p-10">
-          <div className="lg:flex flex-col items-center justify-center text-sm">
-            <div className="mb-4">{lan === "es" ? "DISEÑO & COMERCIALIZACIÓN" : "DESIGN & SALES"}</div>
-            <img src={logoFooter} alt="Logo" className="mb-4" />
+      <main>
+        <section className="h-screen bg-gray-200">
+          <div className="absolute bottom-20 right-10 z-20 w-3/4 max-w-md text-white">
+            <h1 className="font-italic text-4xl mb-8">{lan === "es" ? "Contacto." : "Contact."}</h1>
+            <Form />
           </div>
-          <div className="lg:text-right">
-            <p>
-              Ávalos 2183 | Villa Urquiza | C1431DPO
-              <br /> Ciudad Autónoma de Buenos Aires I Argentina
-              <br /> [+549] 11 3409 5408 / [+549] 11 6014 1806
-            </p>
+          {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 6)} autoplay={false} indicators={false} />}
+        </section>
+
+        <section className="bg-secondary text-white">
+          <div className="container mx-auto max-w-6xl lg:flex justify-between items-center gap-4 p-10">
+            <div className="lg:flex flex-col items-center justify-center text-sm">
+              <div className="mb-4">{lan === "es" ? "DISEÑO & COMERCIALIZACIÓN" : "DESIGN & SALES"}</div>
+              <img src={logoFooter} alt="Logo" className="mb-4" />
+            </div>
+            <div className="lg:text-right">
+              <p>
+                Ávalos 2183 | Villa Urquiza | C1431DPO
+                <br /> Ciudad Autónoma de Buenos Aires I Argentina
+                <br /> [+549] 11 3409 5408 / [+549] 11 6014 1806
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
-    </Layout>
+        </section>
+      </main>
+    </>
   );
 };
 
