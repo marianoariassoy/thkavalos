@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Helmet } from "react-helmet";
-
 import Layout from "../../components/Layout";
 import ImageComponent from "../../components/ImageComponent";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../../components/Loader";
 import { useDataContext } from "../../context/lanContext";
 import ReactPlayer from "react-player";
+import WhatsApp from "../../components/WhatsApp";
 
 const UrquizaContainer = () => {
   useEffect(() => {
@@ -19,7 +19,9 @@ const UrquizaContainer = () => {
   const { lan } = useDataContext();
   const { data, loading } = useFetch(`/imagenes`);
   const { data: dataGaleria, loading: loadingGaleria } = useFetch(`/galeria`);
-  const { data: dataArticles, loading: loadingArticles } = useFetch(`/secciones/${lan}`);
+  const { data: dataArticles, loading: loadingArticles } = useFetch(
+    `/secciones/${lan}`
+  );
   if (loadingArticles) return <Loader />;
 
   const TextoHTML = ({ html }) => {
@@ -55,26 +57,55 @@ const UrquizaContainer = () => {
       </Helmet>
 
       <section className="">
-        <div className="hero bg-secondary px-12 py-8 absolute bottom-20 right-10 z-20 w-3/4 max-w-md">
-          <h1 className="font-italic text-4xl mb-4 text-primary">{dataArticles[7].title}</h1>
+        <div className="hero bg-secondary px-12 py-8 absolute bottom-28 right-10 z-20 w-3/4 max-w-md">
+          <h1 className="font-italic text-4xl mb-4 text-primary">
+            {dataArticles[7].title}
+          </h1>
           <p className="text-white">
             <TextoHTML html={dataArticles[7].text} />
           </p>
         </div>
-        {loading ? <Loader /> : data.filter((item) => item.category == 8).map((item) => <ReactPlayer key={item.id} url={item.video} playing={true} controls={true} muted={true} loop width="100%" height="auto" className="w-screen aspect-video" />)}
+        {loading ? (
+          <Loader />
+        ) : (
+          data
+            .filter((item) => item.category == 8)
+            .map((item) => (
+              <ReactPlayer
+                key={item.id}
+                url={item.video}
+                playing={true}
+                controls={true}
+                muted={true}
+                loop
+                width="100%"
+                height="auto"
+                className="w-screen aspect-video"
+              />
+            ))
+        )}
       </section>
 
       <section className="bg-primary">
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-16 px-10 py-16">
           <div className="text-center">
-            <h1 className="text-6xl font-extra uppercase">{dataArticles[8].title2}</h1>
-            <h1 className="text-white text-6xl font-extra mb-4 uppercase">{dataArticles[8].title3}</h1>
-            <Link to="/proyecto" className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg">
+            <h1 className="text-6xl font-extra uppercase">
+              {dataArticles[8].title2}
+            </h1>
+            <h1 className="text-white text-6xl font-extra mb-4 uppercase">
+              {dataArticles[8].title3}
+            </h1>
+            <Link
+              to="/proyecto"
+              className="text-white bg-secondary px-10 py-3 font-bold text-sm inline-block bg-white-hover hover:shadow-lg"
+            >
               {lan === "es" ? "VER MÁS" : "SEE MORE"}
             </Link>
           </div>
           <div className="text-center border-neutral-950 lg:text-left lg:border-l-4 lg:pl-12 ">
-            <h1 className="font-italic text-4xl mb-4">{dataArticles[8].title}</h1>
+            <h1 className="font-italic text-4xl mb-4">
+              {dataArticles[8].title}
+            </h1>
             <p>
               <TextoHTML html={dataArticles[8].text} />
             </p>
@@ -86,11 +117,15 @@ const UrquizaContainer = () => {
         <div className="absolute left-0 w-full z-20 ">
           <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 px-10 pt-28">
             <div className="bg-white p-8">
-              <h1 className="text-6xl font-extra uppercase mb-4">{dataArticles[9].title}</h1>
+              <h1 className="text-6xl font-extra uppercase mb-4">
+                {dataArticles[9].title}
+              </h1>
               <p className="mb-8">
                 <TextoHTML html={dataArticles[9].text} />
               </p>
-              <h1 className="text-6xl font-extra uppercase mb-4">{dataArticles[10].title}</h1>
+              <h1 className="text-6xl font-extra uppercase mb-4">
+                {dataArticles[10].title}
+              </h1>
               <p>
                 <TextoHTML html={dataArticles[10].text} />
               </p>
@@ -112,16 +147,26 @@ const UrquizaContainer = () => {
           {loadingGaleria ? (
             <Loader />
           ) : (
-            <Slide slidesToScroll={1} slidesToShow={1} responsive={responsiveSettings} {...properties}>
+            <Slide
+              slidesToScroll={1}
+              slidesToShow={1}
+              responsive={responsiveSettings}
+              {...properties}
+            >
               {dataGaleria.map((item) => (
                 <div className="px-3 w-full " key={item.id}>
-                  <ImageComponent src={item.image} alt="Foto de Villa Urquiza" />
+                  <ImageComponent
+                    src={item.image}
+                    alt="Foto de Villa Urquiza"
+                  />
                 </div>
               ))}
             </Slide>
           )}
         </div>
       </section>
+
+      <WhatsApp />
     </Layout>
   );
 };

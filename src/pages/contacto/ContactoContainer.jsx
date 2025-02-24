@@ -8,6 +8,7 @@ import Loader from "../../components/Loader";
 import Form from "./Form";
 import TopBar from "../../components/TopBar";
 import NavBar from "../../components/NavBar";
+import WhatsApp from "../../components/WhatsApp";
 
 const ContactoContainer = () => {
   useEffect(() => {
@@ -40,16 +41,30 @@ const ContactoContainer = () => {
       <main>
         <section className="h-screen bg-gray-200">
           <div className="absolute bottom-20 right-10 z-20 w-3/4 max-w-md text-white">
-            <h1 className="font-italic text-4xl mb-8">{lan === "es" ? "Contacto." : "Contact."}</h1>
+            <h1 className="font-italic text-4xl mb-8">
+              {lan === "es" ? "Contacto." : "Contact."}
+            </h1>
             <Form />
           </div>
-          {loading ? <Loader /> : <Slider data={data.filter((item) => item.category == 6)} autoplay={false} indicators={false} />}
+          {loading ? (
+            <Loader />
+          ) : (
+            <Slider
+              data={data.filter((item) => item.category == 6)}
+              autoplay={false}
+              indicators={false}
+            />
+          )}
         </section>
 
         <section className="bg-secondary text-white">
           <div className="container mx-auto max-w-6xl lg:flex justify-between items-center gap-4 p-10">
             <div className="lg:flex flex-col items-center justify-center text-sm">
-              <div className="mb-4">{lan === "es" ? "DISEÑO & COMERCIALIZACIÓN" : "DESIGN & SALES"}</div>
+              <div className="mb-4">
+                {lan === "es"
+                  ? "DESARROLLO Y COMERCIALIZACION"
+                  : "DESIGN & SALES"}
+              </div>
               <img src={logoFooter} alt="Logo" className="mb-4" />
             </div>
             <div className="lg:text-right">
@@ -61,6 +76,8 @@ const ContactoContainer = () => {
             </div>
           </div>
         </section>
+
+        <WhatsApp />
       </main>
     </>
   );

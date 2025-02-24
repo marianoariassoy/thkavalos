@@ -186,7 +186,7 @@ a {
 }
 
 #nav-menu > span:not(:last-child) {
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 
 #nav-menu,
@@ -261,7 +261,7 @@ a {
 .video-player {
   aspect-ratio: 16/9;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 56vw !important;
 }
@@ -275,4 +275,4 @@ a {
   .default-nav {
     display: none !important;
   }
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

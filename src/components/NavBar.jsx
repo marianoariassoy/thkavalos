@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { useDataContext } from "../context/lanContext";
 import NavMenu from "./NavMenu";
-import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/logo-new.svg";
 
 const menu = [
   {
@@ -37,7 +37,11 @@ const NavBar = () => {
     <div className="flex justify-between items-start px-10 lg:px-20 py-8">
       <div>
         <Link to="/">
-          <img src={logo} alt="Logo Avalos" className="logo" />
+          <img
+            src={logo}
+            alt="Logo Avalos"
+            className="logo w-40 hover:opacity-80 transition-all duration-300"
+          />
         </Link>
       </div>
       <nav>
