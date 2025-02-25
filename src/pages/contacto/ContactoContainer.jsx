@@ -71,7 +71,7 @@ const ContactoContainer = () => {
               <p>
                 Ávalos 2183 | Villa Urquiza | C1431DPO
                 <br /> Ciudad Autónoma de Buenos Aires I Argentina
-                <br /> [+549] 11 3409 5408 / [+549] 11 6014 1806
+                <br /> [+549] 11 5007 0071
               </p>
             </div>
           </div>
